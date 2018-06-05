@@ -12,6 +12,7 @@
         <module>CQ-EV-api</module>
         <module>CQ-EV-business</module>
         <module>CQ-EV-frontEnds</module>
+        <module>CQ-EV-ear</module>
     </modules>
 
     <properties>
@@ -23,6 +24,7 @@
         <hibernate.version>5.0.0.Final</hibernate.version>
         <kafka-version>1.1.0</kafka-version>
         <version.ejb.plugin>3.0.1</version.ejb.plugin>
+        <version.ear.plugin>3.0.1</version.ear.plugin>
     </properties>
 
     <dependencyManagement>
@@ -129,6 +131,7 @@
                 <plugin>
                     <groupId>org.wildfly.plugins</groupId>
                     <artifactId>wildfly-maven-plugin</artifactId>
+                    <version>${version.wildfly.maven.plugin}</version>
                     <configuration>
                         <hostname>127.0.0.1</hostname>
                         <port>9090</port>
