@@ -5,151 +5,151 @@
     <groupId>com.cadit</groupId>
     <artifactId>CQ-EV-master</artifactId>
     <version>1.0-SNAPSHOT</version>
-	<packaging>pom</packaging>
+    <packaging>pom</packaging>
     <name>CQ-EV-master</name>
-		
-	  <modules>
-	  	 <module>CQ-EV-api</module>
-         <module>CQ-EV-business</module>
-         <module>CQ-EV-frontEnds</module>
-      </modules>
 
-	<properties>
+    <modules>
+        <module>CQ-EV-api</module>
+        <module>CQ-EV-business</module>
+        <module>CQ-EV-frontEnds</module>
+    </modules>
+
+    <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <version.wildfly.maven.plugin>1.0.2.Final</version.wildfly.maven.plugin>
         <maven.compiler.source>1.7</maven.compiler.source>
         <maven.compiler.target>1.7</maven.compiler.target>
         <jee.api.version>7.0</jee.api.version>
         <hibernate.version>5.0.0.Final</hibernate.version>
-		<kafka-version>1.1.0</kafka-version>
-		<version.ejb.plugin>3.0.1</version.ejb.plugin>
+        <kafka-version>1.1.0</kafka-version>
+        <version.ejb.plugin>3.0.1</version.ejb.plugin>
     </properties>
 
     <dependencyManagement>
         <dependencies>
             <!--JEE -->
-			<dependency>
-				<groupId>javax.enterprise</groupId>
-				<artifactId>cdi-api</artifactId>
-				<version>2.0</version>
-			</dependency>
-			<dependency>
-				<groupId>javax</groupId>
-				<artifactId>javaee-api</artifactId>
-				<version>${jee.api.version}</version>
-			</dependency>
-			<!-- hibernate db-->
-			<dependency>
-				<groupId>org.hibernate</groupId>
-				<artifactId>hibernate-tools</artifactId>
-				<version>${hibernate.version}</version>
-			</dependency>
+            <dependency>
+                <groupId>javax.enterprise</groupId>
+                <artifactId>cdi-api</artifactId>
+                <version>2.0</version>
+            </dependency>
+            <dependency>
+                <groupId>javax</groupId>
+                <artifactId>javaee-api</artifactId>
+                <version>${jee.api.version}</version>
+            </dependency>
+            <!-- hibernate db-->
+            <dependency>
+                <groupId>org.hibernate</groupId>
+                <artifactId>hibernate-tools</artifactId>
+                <version>${hibernate.version}</version>
+            </dependency>
 
-			<dependency>
-				<groupId>org.hibernate</groupId>
-				<artifactId>hibernate-validator</artifactId>
-				<version>4.1.0.Final</version>
-			</dependency>
+            <dependency>
+                <groupId>org.hibernate</groupId>
+                <artifactId>hibernate-validator</artifactId>
+                <version>4.1.0.Final</version>
+            </dependency>
 
-			<dependency>
-				<groupId>org.hsqldb</groupId>
-				<artifactId>hsqldb</artifactId>
-				<version>2.3.2</version>
-			</dependency>
+            <dependency>
+                <groupId>org.hsqldb</groupId>
+                <artifactId>hsqldb</artifactId>
+                <version>2.3.2</version>
+            </dependency>
 
-			<!-- kafka -->
-			<dependency>
-				<groupId>org.apache.kafka</groupId>
-				<artifactId>kafka-clients</artifactId>
-				<version>${kafka-version}</version><!--0.11.0.0-->
-			</dependency>
+            <!-- kafka -->
+            <dependency>
+                <groupId>org.apache.kafka</groupId>
+                <artifactId>kafka-clients</artifactId>
+                <version>${kafka-version}</version><!--0.11.0.0-->
+            </dependency>
 
-			<!--<dependency>-->
-				<!--<groupId>com.fasterxml.jackson.core</groupId>-->
-				<!--<artifactId>jackson-databind</artifactId>-->
-				<!--<version>2.9.5</version>-->
-			<!--</dependency>-->
-			<!--end kafka-->
+            <!--<dependency>-->
+            <!--<groupId>com.fasterxml.jackson.core</groupId>-->
+            <!--<artifactId>jackson-databind</artifactId>-->
+            <!--<version>2.9.5</version>-->
+            <!--</dependency>-->
+            <!--end kafka-->
 
-			<!-- tests -->
-			<dependency>
-				<groupId>junit</groupId>
-				<artifactId>junit</artifactId>
-				<version>4.12</version>
-				<scope>test</scope>
-			</dependency>
-		</dependencies>
-           
+            <!-- tests -->
+            <dependency>
+                <groupId>junit</groupId>
+                <artifactId>junit</artifactId>
+                <version>4.12</version>
+                <scope>test</scope>
+            </dependency>
+        </dependencies>
+
     </dependencyManagement>
-	<build>
-		<pluginManagement>
-			 <plugins>
-				<plugin>
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-compiler-plugin</artifactId>
-					<version>2.5.1</version>
-					<configuration>
-						<source>${maven.compiler.source}</source>
-						<target>${maven.compiler.target}</target>
-					</configuration>
-				</plugin>
-				<plugin>
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-war-plugin</artifactId>
-					<version>2.2</version>
-					<configuration>
-						<failOnMissingWebXml>false</failOnMissingWebXml>
-					</configuration>
-				</plugin>
+    <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <version>2.5.1</version>
+                    <configuration>
+                        <source>${maven.compiler.source}</source>
+                        <target>${maven.compiler.target}</target>
+                    </configuration>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-war-plugin</artifactId>
+                    <version>2.2</version>
+                    <configuration>
+                        <failOnMissingWebXml>false</failOnMissingWebXml>
+                    </configuration>
+                </plugin>
 
-				<plugin>
-					<groupId>org.wildfly.plugins</groupId>
-					<artifactId>wildfly-maven-plugin</artifactId>
-					<version>${version.wildfly.maven.plugin}</version>
-				</plugin>
-				<plugin>
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-war-plugin</artifactId>
-					<configuration>
-						<failOnMissingWebXml>false</failOnMissingWebXml>
-						<attachClasses>true</attachClasses>
-					</configuration>
-				</plugin>
-				 <plugin>
-					 <groupId>org.apache.maven.plugins</groupId>
-					 <artifactId>maven-ejb-plugin</artifactId>
-					 <version>${version.ejb.plugin}</version>
-					 <configuration>
-						 <ejbVersion>3.0</ejbVersion>
-						 <!-- this is false by default -->
-						 <generateClient>true</generateClient>
-					 </configuration>
-				 </plugin>
-					 <!--for external wildfly server-->
-					 <plugin>
-						 <groupId>org.wildfly.plugins</groupId>
-						 <artifactId>wildfly-maven-plugin</artifactId>
-						 <configuration>
-							 <hostname>127.0.0.1</hostname>
-							 <port>9090</port>
-							 <username>admin</username>
-							 <password>admin</password>
-						 </configuration>
-					 </plugin>
-				 </plugins>
-		</pluginManagement>
-		<!--<profiles>-->
-		<!--<profile>-->
-		<!--<id>WILDFLY</id>-->
-		<!--<activation>-->
-		<!--<activeByDefault>false</activeByDefault>-->
-		<!--</activation>-->
-		<!--<build>-->
-		<!---->
-		<!--</build>-->
-		<!--</profile>-->
-		<!--</profiles>-->
-	</build>
+                <plugin>
+                    <groupId>org.wildfly.plugins</groupId>
+                    <artifactId>wildfly-maven-plugin</artifactId>
+                    <version>${version.wildfly.maven.plugin}</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-war-plugin</artifactId>
+                    <configuration>
+                        <failOnMissingWebXml>false</failOnMissingWebXml>
+                        <attachClasses>true</attachClasses>
+                    </configuration>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-ejb-plugin</artifactId>
+                    <version>${version.ejb.plugin}</version>
+                    <configuration>
+                        <ejbVersion>3.0</ejbVersion>
+                        <!-- this is false by default -->
+                        <generateClient>true</generateClient>
+                    </configuration>
+                </plugin>
+                <!--for external wildfly server-->
+                <plugin>
+                    <groupId>org.wildfly.plugins</groupId>
+                    <artifactId>wildfly-maven-plugin</artifactId>
+                    <configuration>
+                        <hostname>127.0.0.1</hostname>
+                        <port>9090</port>
+                        <username>admin</username>
+                        <password>admin</password>
+                    </configuration>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+        <!--<profiles>-->
+        <!--<profile>-->
+        <!--<id>WILDFLY</id>-->
+        <!--<activation>-->
+        <!--<activeByDefault>false</activeByDefault>-->
+        <!--</activation>-->
+        <!--<build>-->
+        <!---->
+        <!--</build>-->
+        <!--</profile>-->
+        <!--</profiles>-->
+    </build>
 
 
 </project>

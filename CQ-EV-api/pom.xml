@@ -13,17 +13,17 @@
     <artifactId>CQ-EV-api</artifactId>
     <packaging>jar</packaging>
     <name>CQ-EV-api</name>
-      <dependencies>
-          <dependency>
-              <groupId>org.apache.kafka</groupId>
-              <artifactId>kafka-clients</artifactId>
-              <version>${kafka-version}</version><!--0.11.0.0-->
-          </dependency>
-          <dependency>
-              <groupId>javax</groupId>
-              <artifactId>javaee-api</artifactId>
-              <scope>provided</scope>
-          </dependency>
+    <dependencies>
+        <dependency>
+            <groupId>org.apache.kafka</groupId>
+            <artifactId>kafka-clients</artifactId>
+            <version>${kafka-version}</version><!--0.11.0.0-->
+        </dependency>
+        <dependency>
+            <groupId>javax</groupId>
+            <artifactId>javaee-api</artifactId>
+            <scope>provided</scope>
+        </dependency>
     </dependencies>
     <build>
         <finalName>${project.artifactId}</finalName>
@@ -40,10 +40,10 @@
             </resource>
         </resources>
         <!--<testResources>-->
-            <!--<testResource>-->
-                <!--<directory>src/test/resources</directory>-->
-                <!--<filtering>true</filtering>-->
-            <!--</testResource>-->
+        <!--<testResource>-->
+        <!--<directory>src/test/resources</directory>-->
+        <!--<filtering>true</filtering>-->
+        <!--</testResource>-->
         <!--</testResources>-->
-      </build>
+    </build>
 </project>

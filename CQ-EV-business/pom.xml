@@ -16,10 +16,10 @@
         <dependency>
             <groupId>com.cadit</groupId>
             <artifactId>CQ-EV-api</artifactId>
-			<version>1.0-SNAPSHOT</version>
+            <version>1.0-SNAPSHOT</version>
             <scope>compile</scope>
         </dependency>
-       <dependency>
+        <dependency>
             <groupId>javax.enterprise</groupId>
             <artifactId>cdi-api</artifactId>
             <scope>provided</scope>
@@ -45,7 +45,7 @@
             <artifactId>hsqldb</artifactId>
             <scope>runtime</scope>
         </dependency>
-    </dependencies> 
+    </dependencies>
     <build>
         <finalName>${project.artifactId}</finalName>
         <plugins>
@@ -81,26 +81,26 @@
             </resource>
         </resources>
         <!--<testResources>-->
-            <!--<testResource>-->
-                <!--<directory>src/test/resources</directory>-->
-                <!--<filtering>true</filtering>-->
-            <!--</testResource>-->
+        <!--<testResource>-->
+        <!--<directory>src/test/resources</directory>-->
+        <!--<filtering>true</filtering>-->
+        <!--</testResource>-->
         <!--</testResources>-->
-      </build>
-        <!--<profiles>-->
-            <!--<profile>-->
-                <!--<id>WILDFLY</id>-->
-                <!--<activation>-->
-                    <!--<activeByDefault>false</activeByDefault>-->
-                <!--</activation>-->
-                <!--<build>-->
-                    <!--<plugins>-->
-                        <!--&lt;!&ndash;for external wildfly server&ndash;&gt;-->
-                        <!--<plugin>-->
-                           <!---->
-                        <!--</plugin>-->
-                    <!--</plugins>-->
-                <!--</build>-->
-            <!--</profile>-->
-        <!--</profiles>-->
+    </build>
+    <!--<profiles>-->
+    <!--<profile>-->
+    <!--<id>WILDFLY</id>-->
+    <!--<activation>-->
+    <!--<activeByDefault>false</activeByDefault>-->
+    <!--</activation>-->
+    <!--<build>-->
+    <!--<plugins>-->
+    <!--&lt;!&ndash;for external wildfly server&ndash;&gt;-->
+    <!--<plugin>-->
+    <!---->
+    <!--</plugin>-->
+    <!--</plugins>-->
+    <!--</build>-->
+    <!--</profile>-->
+    <!--</profiles>-->
 </project>
