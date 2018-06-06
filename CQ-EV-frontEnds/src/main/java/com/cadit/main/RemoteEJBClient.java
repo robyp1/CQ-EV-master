@@ -102,7 +102,7 @@ public class RemoteEJBClient {
         // the whole package name.
 
         // let's do the lookup
-        DocumentRemote lookup = (DocumentRemote) context.lookup("ejb:CQ-EV-ear/CQ-EV-business//DocumentCreatorBean!"
+        DocumentRemote lookup = (DocumentRemote) context.lookup("ejb:CQ-EV-ear/com.cadit-CQ-EV-business-1.0-SNAPSHOT//DocumentCreatorBean!"
                 + DocumentRemote.class.getName());
 //        context.close();
         return lookup;

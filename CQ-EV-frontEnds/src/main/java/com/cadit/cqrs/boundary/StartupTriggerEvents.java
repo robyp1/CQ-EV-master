@@ -18,6 +18,16 @@ import java.util.logging.Logger;
  * http://127.0.0.1:9190
  * admin
  * admin
+ *
+ * L'ejb remoto viene esposto da wildfly così
+ * 17:49:12,499 INFO  [org.jboss.as.ejb3.deployment] (MSC service thread 1-2)
+ * WFLYEJB0473: JNDI bindings for session bean named 'DocumentCreator' in deployment unit 'subdeployment "com.cadit-CQ-EV-business-1.0-SNAPSHOT.jar" of deployment "CQ-EV-ear.ear"'
+ * are as follows:
+
+ java:global/CQ-EV-ear/com.cadit-CQ-EV-business-1.0-SNAPSHOT/DocumentCreator!com.cadit.boundary.DocumentCreator
+ java:app/com.cadit-CQ-EV-business-1.0-SNAPSHOT/DocumentCreator!com.cadit.boundary.DocumentCreator
+ java:module/DocumentCreator!com.cadit.boundary.DocumentCreator
+ java:global/CQ-EV-ear/com.cadit-CQ-EV-business-1.0-SNAPSHOT/DocumentCreator
  * ******************************
  */
 @Singleton
@@ -41,7 +51,7 @@ public class StartupTriggerEvents {
 
     /**in standalone.xml di wildfly per il jndi java:global/DocumentCreatorBean usare questo mapping
      *&lt;bindings&gt;
-     *&lt;lookup name="java:global/DocumentCreatorBean" lookup="ejb:CQ-EV-ear/CQ-EV-business//DocumentCreatorBean!com.cadit.boundary.DocumentRemote"/&gt;
+     *&lt;lookup name="java:global/DocumentCreatorBean" lookup="ejb:CQ-EV-ear/com.cadit-CQ-EV-business-1.0-SNAPSHOT//DocumentCreatorBean!com.cadit.data.DocumentRemote"/&gt;
      *&lt;/bindings&gt;
     //configurare primqa il destinaion server dove si trova l'ejb istruzioni: https://docs.jboss.org/author/display/WFLY10/EJB+invocations+from+a+remote+server+instance
      **/

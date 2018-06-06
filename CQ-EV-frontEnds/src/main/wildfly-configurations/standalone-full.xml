@@ -353,7 +353,7 @@
         </subsystem>
         <subsystem xmlns="urn:jboss:domain:naming:2.0">
             <bindings>
-                <lookup name="java:global/DocumentCreatorBean" lookup="ejb:CQ-EV-ear/CQ-EV-business//DocumentCreatorBean!com.cadit.data.DocumentRemote"/>
+                <lookup name="java:global/DocumentCreatorBean" lookup="ejb:CQ-EV-ear/com.cadit-CQ-EV-business-1.0-SNAPSHOT//DocumentCreatorBean!com.cadit.data.DocumentRemote"/>
             </bindings>
             <remote-naming/>
         </subsystem>
