@@ -9,7 +9,8 @@ import javax.naming.NamingException;
 import java.util.Hashtable;
 
 /**
- * A sample program which acts a remote client for a EJB deployed on JBoss EAP server. This program shows how to lookup stateful and
+ * A sample program which acts a remote client for a EJB deployed on JBoss EAP server.
+ * is program shows how to lookup
  * stateless beans via JNDI and then invoke on them
  *
 
@@ -49,10 +50,10 @@ public class RemoteEJBClient {
         jndiProperties.put(Context.INITIAL_CONTEXT_FACTORY, org.jboss.naming.remote.client.InitialContextFactory.class.getName());
         if (Boolean.getBoolean(HTTP)) {
             //use HTTP based invocation. Each invocation will be a HTTP request
-            jndiProperties.put(Context.PROVIDER_URL, "http://localhost:8080/wildfly-services");
+            jndiProperties.put(Context.PROVIDER_URL, "http://127.0.0.1:8080/wildfly-services");
         } else {
             //use HTTP upgrade, an initial upgrade requests is sent to upgrade to the remoting protocol
-            jndiProperties.put(Context.PROVIDER_URL, "http-remoting://localhost:8080");
+            jndiProperties.put(Context.PROVIDER_URL, "http-remoting://127.0.0.1:8080");
         }
 
         jndiProperties.put("jboss.naming.client.ejb.context", true);
@@ -77,8 +78,10 @@ public class RemoteEJBClient {
         // the whole package name.
 
         // let's do the lookup
-        return (DocumentRemote) context.lookup("ejb:CQ-EV-ear/CQ-EV-business//DocumentCreatorBean!"
+        DocumentRemote lookup = (DocumentRemote) context.lookup("ejb:CQ-EV-ear/CQ-EV-business//DocumentCreatorBean!"
                 + DocumentRemote.class.getName());
+//        context.close();
+        return lookup;
     }
 }
 
