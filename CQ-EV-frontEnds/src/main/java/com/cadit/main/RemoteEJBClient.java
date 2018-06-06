@@ -43,15 +43,19 @@ public class RemoteEJBClient {
      * @throws NamingException
      */
     private static DocumentRemote lookupRemoteStatelessBean() throws NamingException {
-        final Hashtable<String, String> jndiProperties = new Hashtable<>();
+        final Hashtable<String, Object> jndiProperties = new Hashtable<>();
+
+        jndiProperties.put(Context.URL_PKG_PREFIXES, "org.jboss.ejb.client.naming");
         jndiProperties.put(Context.INITIAL_CONTEXT_FACTORY, org.jboss.naming.remote.client.InitialContextFactory.class.getName());
         if (Boolean.getBoolean(HTTP)) {
             //use HTTP based invocation. Each invocation will be a HTTP request
             jndiProperties.put(Context.PROVIDER_URL, "http://localhost:8080/wildfly-services");
         } else {
             //use HTTP upgrade, an initial upgrade requests is sent to upgrade to the remoting protocol
-            jndiProperties.put(Context.PROVIDER_URL, "remote://localhost:8080");
+            jndiProperties.put(Context.PROVIDER_URL, "http-remoting://localhost:8080");
         }
+
+        jndiProperties.put("jboss.naming.client.ejb.context", true);
         final Context context = new InitialContext(jndiProperties);
 
         // The JNDI lookup name for a stateless session bean has the syntax of:
@@ -73,7 +77,7 @@ public class RemoteEJBClient {
         // the whole package name.
 
         // let's do the lookup
-        return (DocumentRemote) context.lookup("ejb:/CQ-EV-ear/CQ-EV-business//DocumentCreatorBean!"
+        return (DocumentRemote) context.lookup("ejb:CQ-EV-ear/CQ-EV-business//DocumentCreatorBean!"
                 + DocumentRemote.class.getName());
     }
 }
