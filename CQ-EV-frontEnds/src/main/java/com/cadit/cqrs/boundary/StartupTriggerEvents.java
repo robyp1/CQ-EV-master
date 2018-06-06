@@ -45,7 +45,7 @@ public class StartupTriggerEvents {
      *&lt;/bindings&gt;
     //configurare primqa il destinaion server dove si trova l'ejb istruzioni: https://docs.jboss.org/author/display/WFLY10/EJB+invocations+from+a+remote+server+instance
      **/
-    //@EJB(lookup = "java:global/DocumentCreatorBean") //jndi che va mappata nello standalone-full.xml in naming sotto binding
+    @EJB(lookup = "java:global/DocumentCreatorBean") //jndi che va mappata nello standalone-full.xml in naming sotto binding
     DocumentRemote documentCreatorBean;
 
     @Resource
