@@ -41,7 +41,7 @@ public class StartupTriggerEvents {
 
     /**in standalone.xml di wildfly per il jndi java:global/DocumentCreatorBean usare questo mapping
      *&lt;bindings&gt;
-     *&lt;lookup name="java:global/DocumentCreatorBean" lookup="ejb:CQ-EV-ear/CQ-EV-business//DocumentCreatorBean!com.cadit.boundary.DocumentRemote"/&gt;
+     *&lt;lookup name="java:global/DocumentCreatorBean" lookup="ejb:/CQ-EV-ear/CQ-EV-business//DocumentCreatorBean!com.cadit.boundary.DocumentRemote"/&gt;
      *&lt;/bindings&gt;
     //configurare primqa il destinaion server dove si trova l'ejb istruzioni: https://docs.jboss.org/author/display/WFLY10/EJB+invocations+from+a+remote+server+instance
      **/

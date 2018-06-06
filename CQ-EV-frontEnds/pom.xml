@@ -48,6 +48,14 @@
             <version>${project.version}</version>
             <type>ejb-client</type>
         </dependency>
+        <!-- qui ci vuole la versione del server wildfly che si usa, per il test da main-->
+        <dependency>
+            <groupId>org.wildfly</groupId>
+            <artifactId>wildfly-ejb-client-bom</artifactId>
+            <version>8.0.0.Final</version>
+            <type>pom</type>
+            <scope>compile</scope>
+        </dependency>
     </dependencies>
     <build>
         <finalName>${project.artifactId}</finalName>
