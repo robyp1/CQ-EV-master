@@ -12,6 +12,30 @@ import java.util.Hashtable;
  * A sample program which acts a remote client for a EJB deployed on JBoss EAP server.
  * is program shows how to lookup
  * stateless beans via JNDI and then invoke on them
+ * TODO errore che mi da (stesso errore se chiamato dal StartupTriggerEvents tramite l'annotazione @ejb, gli standalone-full.xml sono in wildfly-configuations , i server sono avviati
+ * TODO sempre con standalone.bat ma con l'opzione -server-config=standalone-full.xml
+ *
+ * Jun 06, 2018 4:26:00 PM org.xnio.Xnio <clinit>
+ INFO: XNIO version 3.4.0.Final
+ Jun 06, 2018 4:26:00 PM org.xnio.nio.NioXnio <clinit>
+ INFO: XNIO NIO Implementation Version 3.4.0.Final
+ Jun 06, 2018 4:26:01 PM org.jboss.remoting3.EndpointImpl <clinit>
+ INFO: JBoss Remoting version 4.0.21.Final
+ Jun 06, 2018 4:26:01 PM org.jboss.ejb.client.EJBClient <clinit>
+ INFO: JBoss EJB Client version 2.1.4.Final
+ Obtained a remote stateless calculator for invocation
+ Exception in thread "main" java.lang.IllegalStateException: EJBCLIENT000025: No EJB receiver available for handling [appName:CQ-EV-ear, moduleName:CQ-EV-business, distinctName:] combination for invocation context org.jboss.ejb.client.EJBClientInvocationContext@1e88b3c
+ at org.jboss.ejb.client.EJBClientContext.requireEJBReceiver(EJBClientContext.java:798)
+ at org.jboss.ejb.client.ReceiverInterceptor.handleInvocation(ReceiverInterceptor.java:128)
+ at org.jboss.ejb.client.EJBClientInvocationContext.sendRequest(EJBClientInvocationContext.java:186)
+ at org.jboss.ejb.client.EJBInvocationHandler.sendRequestWithPossibleRetries(EJBInvocationHandler.java:255)
+ at org.jboss.ejb.client.EJBInvocationHandler.doInvoke(EJBInvocationHandler.java:200)
+ at org.jboss.ejb.client.EJBInvocationHandler.doInvoke(EJBInvocationHandler.java:183)
+ at org.jboss.ejb.client.EJBInvocationHandler.invoke(EJBInvocationHandler.java:146)
+ at com.sun.proxy.$Proxy2.pdfCreator(Unknown Source)
+ at com.cadit.main.RemoteEJBClient.invokeStatelessBean(RemoteEJBClient.java:36)
+ at com.cadit.main.RemoteEJBClient.main(RemoteEJBClient.java:24)
+
  *
 
  */
