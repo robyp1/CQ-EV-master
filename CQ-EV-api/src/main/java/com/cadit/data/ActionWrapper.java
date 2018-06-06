@@ -1,4 +1,4 @@
-package com.cadit.cqrs.cdi;
+package com.cadit.data;
 
 import com.cadit.data.DocEvent;
 

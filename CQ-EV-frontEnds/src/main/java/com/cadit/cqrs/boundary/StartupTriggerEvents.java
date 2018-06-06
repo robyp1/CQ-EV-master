@@ -13,9 +13,11 @@ import java.util.logging.Logger;
 
 /**
  * *************************************************************************************************
- * ********************************************BACK-END*********************************************
- * *************************************************************************************************
  * TRIGGER- TIMER- EJB SINGLETON inizializzato al deploy/inizializzazione dell'applicazione
+ * fare il deploy a mano da management console, perchè il wildfly plugin funziona solo sulla porta 9090
+ * http://127.0.0.1:9190
+ * admin
+ * admin
  * ******************************
  */
 @Singleton
@@ -37,10 +39,13 @@ public class StartupTriggerEvents {
     @Inject
     Configuration configuration;
 
-    //in standalone.xml di wildfly per il jndi java:global/DocumentCreatorBean usare uno di questi mapping
-    //@EJB(lookup="java:global/CQ-EV-business//DocumentCreatorBean!com.cadit.boundary.DocumentRemote")
-    //@EJB(lookup="ejb://CQ-EV-business//DocumentCreatorBean!com.cadit.boundary.DocumentRemote")
-    @EJB(lookup = "java:global/DocumentCreatorBean") //jndi che va mappata nello standalone xml in naming sotto binding
+    /**in standalone.xml di wildfly per il jndi java:global/DocumentCreatorBean usare questo mapping
+     *&lt;bindings&gt;
+     *&lt;lookup name="java:global/DocumentCreatorBean" lookup="ejb:CQ-EV-ear/CQ-EV-business//DocumentCreatorBean!com.cadit.boundary.DocumentRemote"/&gt;
+     *&lt;/bindings&gt;
+    //configurare primqa il destinaion server dove si trova l'ejb istruzioni: https://docs.jboss.org/author/display/WFLY10/EJB+invocations+from+a+remote+server+instance
+     **/
+    //@EJB(lookup = "java:global/DocumentCreatorBean") //jndi che va mappata nello standalone-full.xml in naming sotto binding
     DocumentRemote documentCreatorBean;
 
     @Resource

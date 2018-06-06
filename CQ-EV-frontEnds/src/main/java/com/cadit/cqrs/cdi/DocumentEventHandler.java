@@ -1,5 +1,6 @@
 package com.cadit.cqrs.cdi;
 
+import com.cadit.data.ActionWrapper;
 import com.cadit.data.DocEvent;
 import com.cadit.data.KafkaProperties;
 import com.cadit.cqrs.kafka.EventConsumer;
@@ -25,7 +26,6 @@ import java.util.logging.Logger;
  */
 @Startup
 @Singleton
-//alternativa @WebListener e classe che implements ServletContextListener
 public class DocumentEventHandler {
 
     public static final String DOC_KAFKA_TOPIC_NAME = "DOC-KAFKA-TOPIC-NAME";

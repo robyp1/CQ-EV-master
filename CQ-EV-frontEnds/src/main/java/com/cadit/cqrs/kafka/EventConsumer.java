@@ -1,6 +1,6 @@
 package com.cadit.cqrs.kafka;
 
-import com.cadit.cqrs.cdi.ActionWrapper;
+import com.cadit.data.ActionWrapper;
 import com.cadit.data.DocEvent;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.apache.kafka.clients.consumer.ConsumerRecords;
