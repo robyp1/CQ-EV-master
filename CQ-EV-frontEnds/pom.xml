@@ -47,6 +47,7 @@
             <artifactId>CQ-EV-business</artifactId>
             <version>${project.version}</version>
             <type>ejb-client</type>
+            <scope>runtime</scope>
         </dependency>
         <!-- qui ci vuole la versione del server wildfly che si usa, per il test da main-->
         <dependency>
@@ -54,7 +55,7 @@
             <artifactId>wildfly-ejb-client-bom</artifactId>
             <version>10.1.0.Final</version>
             <type>pom</type>
-            <scope>compile</scope>
+            <scope>provided</scope>
         </dependency>
     </dependencies>
     <build>

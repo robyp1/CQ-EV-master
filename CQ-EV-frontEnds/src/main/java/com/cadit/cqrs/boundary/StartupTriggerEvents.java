@@ -86,7 +86,7 @@ public class StartupTriggerEvents {
 
 
     @Timeout
-//    @Lock(LockType.WRITE) //synchronize gestito dal container , forse non necessario , da rivedere
+    @Lock(LockType.WRITE) //synchronize gestito dal container , verificare se serve...
     public void callService(Timer timer){
         //call to produce pdf document
         log.log(Level.INFO, "Trigger document creation");

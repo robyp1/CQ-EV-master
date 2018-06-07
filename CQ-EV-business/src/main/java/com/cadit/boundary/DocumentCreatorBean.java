@@ -21,6 +21,7 @@ import java.util.logging.Logger;
  */
 @Stateless
 @Remote(DocumentRemote.class)
+@TransactionManagement(value=TransactionManagementType.CONTAINER) //esplicito ma non necessario
 public class DocumentCreatorBean implements DocumentRemote{
 
     @EJB //questo ejb è locale
@@ -38,30 +39,28 @@ public class DocumentCreatorBean implements DocumentRemote{
     private Logger log = Logger.getLogger(this.getClass().getSimpleName());
 
     /**
+     * metodo esposto da remoto con http-remoting porta 8080 del server wildfly 1 dove è deploiato questo modulo di business
      * Se il documento è stato creato salva l'evento e invia l'evento al front end
      */
     @Asynchronous
-    @TransactionAttribute(TransactionAttributeType.REQUIRED) //indifferentem se non cè una tx in corso ne crea una nuova
+    @TransactionAttribute(TransactionAttributeType.REQUIRES_NEW) //se chiamo remotamente sembra sia obbligatorio esplicitare new altrimenti mi da errore che non cè una transazione associata
     public void pdfCreator(){
         EventEntity finalEventState = new EventEntity();
         try {
             DocEnum type = DocEnum.PDF;
-            Integer docId = documentCreator.create(type);//oggetto detached perchè appartiene ad una altra transazione
-            DocumentEntity documentEntity = em.find(DocumentEntity.class, docId);
+            Integer docId = documentCreator.create(type);//oggetto detached perchè ritorna da un metoto che apre una altra transazione
+            DocumentEntity documentEntity = em.find(DocumentEntity.class, docId);//oggetto re-attached
             finalEventState.setType(type);
-            finalEventState.setStatus(StatusJob.COMPLETED); //qui imposto che il PDF è stato creato ma commito solo dopo avere inviatto l'evento in coda (all'uscita del metodo jta committa)
+            finalEventState.setStatus(StatusJob.COMPLETED); //qui imposto che il PDF è stato creato ma commito solo dopo avere inviato l'evento in coda (all'uscita del metodo jta fa commit)
             finalEventState.setInfoPath(documentEntity.getPath());
             documentEntity.addEvent(finalEventState);
             em.persist(finalEventState);
-
-            DocEvent docEvent = new DocEvent(documentEntity.getId());
+            DocEvent docEvent = new DocEvent(documentEntity.getId()); //transazione interna era required new quindi ha completato e ho gia' l'id generato da db
             //invio evento come msg alla topic, dopo posso committare
             eventProducer.publish(docEvent);
-
             //throw new RuntimeException("Ops! runtime ex forzata per provare che ha terminato la transazione interna e ha fatto rollback solo di questa");
             //NB: la inner transaction ha già salvato i riferimenti al pdf/doc che è stato completato, ci perdiamo solo l'evento di comunicazione al front-end
-            //Il client ha a dispozione il documento comunque tramite una pagina di query /interrogazioen
-
+            //Il client ha a dispozione il documento comunque tramite una pagina di query /interrogazione
         } catch (Exception e) {
             log.log(Level.SEVERE, e.getMessage(), e);
             ejbSessionContext.setRollbackOnly(); //se il pdf non si è cereato forzo rollback senza rilanciare Runtime che cmq lo farebbe
