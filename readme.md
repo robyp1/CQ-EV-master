@@ -1,3 +1,13 @@
+```
+Il progetto si compone di 4 moduli di cui uno è il modulo parent “CQ-EV-master” che contiene gli altri 3 sotto-moduli:
+- maven CQ-EV-busines (tipo ejb, target .jar)
+- maven CQ-EV-ear (tipo ear contiene l’ejb e va deploiato sul server 1, target .ear)
+- un war CQ-EV-frontEnds (tipo war, che chiama l'ejb remotamente e va deploiato sul server 2)
+
+server1: wildfly-10.1.0.Final
+server2: wildfly-10.1.0.Final_2
+
+```
 
 # PER CONFIGURARE L'APPLICAZIONE
 

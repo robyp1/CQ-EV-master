@@ -49,7 +49,8 @@
             <type>ejb-client</type>
             <scope>runtime</scope>
         </dependency>
-        <!-- qui ci vuole la versione del server wildfly che si usa, per il test da main-->
+        <!-- qui ci vuole la versione del server wildfly che si usa, per il test da main
+        lascio provided perchè sul server e'' gia' presente-->
         <dependency>
             <groupId>org.wildfly</groupId>
             <artifactId>wildfly-ejb-client-bom</artifactId>
